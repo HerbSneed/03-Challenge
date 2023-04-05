@@ -11,7 +11,7 @@ function generatePassword() {
   var orderedpassword = "";
 
   //Begining of code block for loop
-  var userChoice = prompt("Enter a password length that is at between 8 & 128 characters.");
+  var userChoice = prompt("Enter a password length that is between 8 & 128 characters.");
     
   if (userChoice > 7 && userChoice < 129) {
     var userLowerCaseLet = prompt("Would you like lowercase letters?");
@@ -53,7 +53,7 @@ function generatePassword() {
       return randomPassword;
     
   } else {
-      alert("Enter a password length that is at between 8 & 128 characters. Generate password again.");
+      alert("Enter a password length that is between 8 & 128 characters. Generate password again.");
       return generatePassword();
   }
 }  
