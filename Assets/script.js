@@ -5,8 +5,12 @@ function generatePassword() {
   const upperAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const numbers = "0123456789";
   const specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+  const yes = "yes" || "Yes" || "YES" || "Y" || "y";
+  const no = "no" || "No" || "NO" || "N" || "n";
   var randomPassword = "";
   var orderedpassword = "";
+
+  //Begining of code block for loop
   var userChoice = prompt("Enter a password length that is at between 8 & 128 characters.");
     
   if (userChoice > 7 && userChoice < 129) {
@@ -15,30 +19,31 @@ function generatePassword() {
     var userNum = prompt("Would you like numbers?");
     var userSpecialChar = prompt("Would you like special characters?");  
   
-    if (userLowerCaseLet === "yes") {
+    if (userLowerCaseLet === yes.valueOf()) {
       orderedpassword += lowerAlpha;
     } else {
       orderedpassword = "";
     }
   
-    if (userUpperCaseLet === "yes") {
+    if (userUpperCaseLet === yes.valueOf()) {
       orderedpassword += upperAlpha;
     } else {
       orderedpassword = orderedpassword;
     }
   
-    if (userNum === "yes") {
+    if (userNum === yes.valueOf()) {
       orderedpassword += numbers;    
     } else {
       orderedpassword = orderedpassword;
     }
   
-    if (userSpecialChar === "yes") {
+    if (userSpecialChar === yes.valueOf()) {
       orderedpassword += specialChar;
     } else {
       orderedpassword = orderedpassword;
     }
-  
+    
+// For Loop for orderedpassword string randomization
     var orderedpasswordLength = orderedpassword.length;
     for (var i = 0; i < userChoice; i++) {
       randomPassword += orderedpassword.charAt(Math.floor(Math.random(i) * orderedpasswordLength));     
@@ -49,9 +54,11 @@ function generatePassword() {
     
   } else {
       alert("Enter a password length that is at between 8 & 128 characters. Generate password again.");
+      return generatePassword();
   }
 }  
 
+// Function to write generated password into text area
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -61,5 +68,4 @@ function writePassword() {
 
 
 
-// var yes = "yes" || "Yes" || "YES" || "Y" || "y";
-// var no = "no" || "No" || "NO" || "N" || "n";
+
